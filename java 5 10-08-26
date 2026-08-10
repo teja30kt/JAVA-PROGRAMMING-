@@ -1,35 +1,59 @@
-import java.util.*;
+import java.util.Scanner;
 
-class Main {
+public class Main {
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
 
-        int id = sc.nextInt();
-        String name = sc.next();
-        int present = 0, absent = 0;
+      
+        System.out.print("Enter Employee ID: ");
+        int employeeId = sc.nextInt();
+
+        sc.nextLine();
+
+        System.out.print("Enter Employee Name: ");
+        String employeeName = sc.nextLine();
+
+
+        int[] attendance = new int[7];
+
+        System.out.println("Enter attendance for 7 working days (1 = Present, 0 = Absent):");
 
         for (int i = 0; i < 7; i++) {
-            int x = sc.nextInt();
+            attendance[i] = sc.nextInt();
 
-            if (x != 0 && x != 1) {
+            if (attendance[i] != 0 && attendance[i] != 1) {
                 System.out.println("Invalid Attendance Input");
+                sc.close();
                 return;
             }
-
-            if (x == 1)
-                present++;
-            else
-                absent++;
         }
 
-        double per = present * 100.0 / 7;
+        int presentDays = 0;
+        int absentDays = 0;
 
-        System.out.printf("Attendance = %.2f%%%n", per);
-        System.out.println("Absent Days = " + absent);
+        for (int i = 0; i < 7; i++) {
+            if (attendance[i] == 1) {
+                presentDays++;
+            } else {
+                absentDays++;
+            }
+        }
 
-        if (per >= 90)
+        double attendancePercentage = (presentDays / 7.0) * 100;
+
+        System.out.println("\nAttendance Report");
+        System.out.println("Employee ID: " + employeeId);
+        System.out.println("Employee Name: " + employeeName);
+        System.out.printf("Attendance = %.2f%%\n", attendancePercentage);
+        System.out.println("Absent Days = " + absentDays);
+
+        if (attendancePercentage >= 90) {
             System.out.println("Eligible");
-        else
+        } else {
             System.out.println("Not Eligible");
+        }
+
+        sc.close();
     }
 }
