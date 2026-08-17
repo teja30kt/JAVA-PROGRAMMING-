@@ -1,0 +1,23 @@
+{\rtf1\fbidis\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil Segoe UI;}{\f1\fnil\fcharset0 Segoe UI;}}
+{\colortbl ;\red0\green0\blue0;}
+{\*\generator Riched20 10.0.26100}\viewkind4\uc1 
+\pard\tx720\cf1\f0\fs38 import java.util.Scanner;\par
+\par
+public class\f1  Main\f0\{\par
+    public static void main(String[] args) \{\par
+\par
+        Scanner sc = new Scanner(System.in);\par
+\par
+        String feedback = sc.nextLine();\par
+\par
+        if (feedback.equals("\\"\\"") || feedback.trim().isEmpty()) \{\par
+            System.out.println("Invalid Feedback Message");\par
+        \} else \{\par
+            String[] words = feedback.trim().split("\\\\s+");\par
+            System.out.println("Words = " + words.length);\par
+        \}\par
+\par
+        sc.close();\par
+    \}\par
+\}\par
+}
